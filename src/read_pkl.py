@@ -1,6 +1,9 @@
 import cv2
 import numpy as np
 import pickle
+import random
+
+
 
 # Carregando os modelos treinados
 with open('mlp_clf.pkl', 'rb') as f:
@@ -9,8 +12,10 @@ with open('mlp_clf.pkl', 'rb') as f:
 with open('sgd_clf.pkl', 'rb') as f:
     sgd_clf = pickle.load(f)
 
+randomLetterI = random.randint(0, 89)
 # Lendo a imagem e convertendo para escala de cinza
-image_path = 'dataset/v20220930_partial/i_l/train_69/train_69_00030.png'  # Substitua pelo caminho da sua imagem
+image_path = f"dataset/v20220930_partial/i_l/train_69/train_69_000{randomLetterI}.png"  # Substitua pelo caminho da sua imagem que deseja testar
+
 img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 
 # Redimensionando a imagem para um tamanho fixo (ex: 64x64 pixels)
